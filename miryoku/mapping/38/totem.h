@@ -19,6 +19,26 @@ K00  K20  K21  K22  K23  K24       K25  K26  K27  K28  K29  K09 \
 #define MIRYOKU_KLUDGE_THUMBCOMBOS_LEFT 33 34
 #define MIRYOKU_KLUDGE_THUMBCOMBOS_RIGHT 35 36
 
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        wakeup-source;
+
+        diode-direction = "col2row";
+        row-gpios
+            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+};
+
 #endif
 
 #define MIRYOKU_MAPPING MIRYOKU_LAYOUTMAPPING_TOTEM
